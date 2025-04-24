@@ -1,0 +1,45 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  application:
+    name: Arquetipo de Spring Boot
+  data:
+    mongodb:
+      uri: mongodb://root:example@localhost:27017/
+      database: ticket
+      collection: ticket
+  jpa:
+    database: default
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    path: /v3/api-docs
+info:
+  app:
+    name: Mi API de Tickets
+    description: API para la gestión de tickets
+    version: 1.0.0
+  contact:
+    name: Algo
+    email: algo.email@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html

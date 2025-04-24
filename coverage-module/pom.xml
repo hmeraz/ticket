@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.axity</groupId>
+    <artifactId>ticket</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <packaging>jar</packaging>
+  <groupId>com.axity</groupId>
+  <artifactId>coverage-module</artifactId>
+  <name>coverage-module</name>
+   <description>coverage-module</description>
+    <properties>
+        <java.version>1.17</java.version>
+    </properties>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>com.axity</groupId>
+      <artifactId>ticket-api</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.axity</groupId>
+      <artifactId>ticket-commons</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.axity</groupId>
+      <artifactId>ticket-facade</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.axity</groupId>
+      <artifactId>ticket-model</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.axity</groupId>
+      <artifactId>ticket-persistence</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.axity</groupId>
+      <artifactId>ticket-service</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/axity/ticket/model/*</exclude>
+                        <exclude>com/axity/ticket/**/*Dto.*</exclude>
+                        <exclude>com/axity/ticket/commons/messages/*</exclude>
+                        <exclude>com/axity/ticket/Application.*</exclude>
+                        <exclude>com/axity/ticket/commons/aspectj/*</exclude>
+                    </excludes>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>jacoco-site-aggregate</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
