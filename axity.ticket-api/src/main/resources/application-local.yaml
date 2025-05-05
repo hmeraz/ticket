@@ -26,20 +26,18 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password: sa
-
-springdoc:
-  swagger-ui:
-    path: /swagger-ui
-  api-docs:
-    path: /v3/api-docs
-info:
-  app:
-    name: Mi API de Tickets
-    description: API para la gestión de tickets
-    version: 1.0.0
-  contact:
-    name: Algo
-    email: algo.email@example.com
-  license:
-    name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: ticket-grupo
+      auto-offset-reset: earliest
+    producer:
+      client-id: ticket-producer
+  redis:
+    host: localhost
+    port: 6379
+    password: passwordDev
+ticket:
+  kafka:
+    topic: ticket-topic
+    trusted-packages: com.axity.ticket.commons.dto
