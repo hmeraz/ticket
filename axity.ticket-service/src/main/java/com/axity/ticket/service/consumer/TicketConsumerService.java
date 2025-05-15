@@ -20,7 +20,7 @@ public class TicketConsumerService {
     @KafkaListener(topics = "${ticket.kafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
     public void listener(TicketDto ticket) throws JsonProcessingException {
         System.out.println("Mensaje recibido: " + ticket);
-        redisService.save(String.valueOf(ticket.getSkId()), ticket);
         ticketService.save(ticket);
+        redisService.save(String.valueOf(ticket.getSkId()), ticket);
     }
 }

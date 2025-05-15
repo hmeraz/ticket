@@ -4,28 +4,13 @@ spring:
       on-profile: local
   application:
     name: Arquetipo de Spring Boot
-  data:
-    mongodb:
-      uri: mongodb://root:example@localhost:27017/
-      database: ticket
-      collection: ticket
-  jpa:
-    database: default
-    database-platform: org.hibernate.dialect.H2Dialect
-    generate-ddl: false
-    hibernate:
-      ddl-auto: none
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-    show-sql: true
-  datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: sa
+  cassandra:
+    contact-points: localhost
+    keyspace-name: ticket_digital
+    port: 9042
+    username: admin
+    password: admin
+    local-datacenter: datacenter1
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
